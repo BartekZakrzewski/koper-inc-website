@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button } from '@material-ui/core';
+import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button, CssBaseline } from '@material-ui/core';
 
 import useStyles from './styles';
 
@@ -8,6 +8,7 @@ import PaymentForm from '../PaymentForm';
 
 
 import { commerce } from '../../../lib/commerce';
+import { Link, useNavigate } from 'react-router-dom';
 
 const steps = ['Dostawa', 'Płatność'];
 
@@ -15,7 +16,9 @@ const Checkout = ({ cart, order, onCaptureCheckout, err }) => {
     const [activeStep, setActiveStep] = useState(0);
     const [checkoutToken, setChekoutToken] = useState(null);
     const [shippingData, setShippingData] = useState({});
+    //const [isFinished, setFinished] = useState(false);
     const classes = useStyles();
+    const history = useNavigate();
 
     useEffect(() => {
         if(cart.id){
@@ -25,7 +28,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, err }) => {
     
                     setChekoutToken(token);
                 } catch (err) {
-    
+                    history('/');
                 }
             }
     
@@ -42,7 +45,46 @@ const Checkout = ({ cart, order, onCaptureCheckout, err }) => {
         nextStep();
     }
 
-    const Confirmation = () => <div>Confirmation</div>
+    /*const timeout = () => {
+        setTimeout(() => {
+            setFinished(true);
+        }, 10000)
+    }*/
+
+    let Confirmation = () => order.customer ? (
+        <>
+            <div>
+                <Typography variant='h5'>Dziękujemy za zakup, {order.customer.firstname}!</Typography>
+                <Divider className={classes.divider}/>
+                <Typography variant='subtitle2'>Order ref: {order.customer_reference}</Typography>
+            </div>
+            <br />
+            <Button component={Link} to="/" variant="outlined" type='button'>Strona Główna</Button>
+        </>
+    ) : 
+    /*isFinished ? (
+        <>
+            <div>
+                <Typography variant='h5'>Dziękujemy za zakup!</Typography>
+                <Divider className={classes.divider}/>
+            </div>
+            <br />
+            <Button component={Link} to="/" variant="outlined" type='button'>Strona Główna</Button>
+        </>
+    ) : */
+    (
+        <div className={classes.spinner}>
+            <CircularProgress />
+        </div>
+    )
+
+    if(err) {
+        <>
+            <Typography variant='h5'>Error: {err}</Typography>
+            <br />
+            <Button component={Link} to="/" variant="outlined" type='button'>Strona Główna</Button>
+        </>
+    }
 
     const Form = () => activeStep === 0 
     ? <AdressForm checkoutToken={checkoutToken} next={next} /> 
@@ -50,6 +92,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, err }) => {
 
     return (
         <>
+            <CssBaseline />
             <div className={classes.toolbar}/>
             <main className={classes.layout}>
                 <Paper className={classes.paper}>

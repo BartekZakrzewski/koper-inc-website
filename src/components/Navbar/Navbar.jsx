@@ -22,7 +22,7 @@ const Navbar = ({ totalItems }) => {
             <AppBar position='fixed' className={classes.appBar} style={{background: '#121212'}}>
                 <Toolbar>
                     <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
-                        <img src={logo} alt="Koper Inc." height="75px" className={classes.image}/>
+                        <img src={logo} alt="Koper Inc." height="50px" className={classes.image}/>
                         Koper Inc.
                     </Typography>
                     <div className={classes.grow}/>
