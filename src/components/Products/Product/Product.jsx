@@ -12,17 +12,17 @@ const Product = ({ product, onAddToCart }) => {
             <CardMedia className={classes.media} image={product.image.url} title={product.name}/>
             <CardContent>
                 <div className={classes.cardContent}>
-                    <Typography variant="h5" gutterBottom>
+                    <Typography variant="h5" style={{color: "#fff"}} gutterBottom>
                         {product.name}
                     </Typography>
-                    <Typography variant="h5">
+                    <Typography variant="h5" style={{color: "#fff"}}>
                         {product.price.formatted_with_symbol}
                     </Typography>
                 </div>
-                <Typography dangerouslySetInnerHTML={{__html: product.description}} variant='body2' color='textSecondary'/>
+                <Typography dangerouslySetInnerHTML={{__html: product.description}} variant='body2' style={{color: "rgba(255, 255, 255, 0.7)"}}/>
             </CardContent>
             <CardActions disableSpacing className={classes.cardActions}>
-                <IconButton aria-label="Add to Cart" onClick={() => onAddToCart(product.id, 1)}>
+                <IconButton aria-label="Add to Cart" onClick={() => onAddToCart(product.id, 1)} style={{color: "#fff"}}>
                     <AddShoppingCart/>
                 </IconButton>
             </CardActions>

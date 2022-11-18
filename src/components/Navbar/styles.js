@@ -4,9 +4,9 @@ const drawerWidth = 0;
 
 export default makeStyles((theme) => ({
   appBar: {
-    padding: '0.5rem',
+    //padding: '0.5rem',
     boxShadow: 'none',
-    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+    borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
