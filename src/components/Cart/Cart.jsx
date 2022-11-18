@@ -9,7 +9,7 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
     const classes = useStyles();
 
     const EmptyCart = () => (
-        <Typography variant='subtitle1'>
+        <Typography variant='subtitle1' style={{color: "rgba(255,255,255,0.7)"}}>
             Nie masz jeszczę niczego w koszyku, <Link to="/" className={classes.link}>dodaj teraz!</Link>
         </Typography>
     );
@@ -25,7 +25,7 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
             </Grid>
 
             <div className={classes.cardDetails}>
-                <Typography variant="h4">
+                <Typography variant="h4" style={{color: "rgb(255, 255, 255, 0.7)"}}>
                     Łącznie: { cart.subtotal.formatted_with_symbol }
                 </Typography>
                 <div>
@@ -41,7 +41,7 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
     return (
         <Container>
             <div className={classes.toolbar} />
-            <Typography className={classes.title} variant="h3" gutterBottom>Twój Koszyk</Typography>
+            <Typography className={classes.title} style={{color: "#fff"}} variant="h3" gutterBottom>Twój Koszyk</Typography>
             { !cart.line_items.length ? <EmptyCart /> : <FilledCart /> }
         </Container>
     )
