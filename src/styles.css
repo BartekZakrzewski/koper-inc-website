@@ -45,10 +45,178 @@ body{
 
 .welcome-button:hover{
     transform: scale(.98);
-    border-radius: 5rem;
 }
 
 .kontakt-btn{
-    all: unset;
+    margin-top: 1rem;
     color: #181818;
+    z-index: 999;
+}
+.kontakt-btn > h4{
+    font-weight: 700;
+}
+#kontakt{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.contact-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100%;
+    color: #fff;
+
+    margin: 0 0 2rem 0;
+}
+
+/* .contact-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+
+.container-message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100%;
+}
+
+label:has(+ div > input[name="form_name"]:not(:focus)),
+label:has(+ div > input[name="form_email"]:not(:focus)),
+label:has(+ div > input[name="form_subject"]:not(:focus)){
+    color: #fff !important;
+}
+
+div::before,
+div::before:has(> input[name="form_email"]),
+div::before:has(> input[name="form_subject"]){
+    border-bottom: 2px solid #fff !important;
+    color: #fff !important;
+    background-color: #fff;
+}
+
+
+input[name="form_name"]::before,
+input[name="form_email"]::before,
+input[name="form_subject"]::before{
+    border-bottom: 2px solid #fff !important;
+    color: #fff !important;
+    background-color: #fff;
+} */
+
+.container{
+    background: #121212;
+    width: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+
+    border-radius: .25rem;
+}
+@media screen and (max-width: 599px) {
+    .container{
+        width: 15rem;
+    }
+}
+
+.inputs{
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    
+    padding: 1rem;
+}
+
+.inputs > div > div > div::before{
+    border-bottom: 2px solid #fff !important;
+}
+
+.inputs > div > div > div > input{
+    color: #fff !important;
+}
+
+.inputs > div > div > label{
+    color: #fff !important;
+}
+
+.textarea{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+textarea{
+    resize: none;
+    padding: 0;
+    outline: 0;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+
+    color: #fff;
+}
+
+.text{
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+
+    position: absolute;
+    
+    bottom: 0;
+    border-bottom:2px solid #3f51b5;
+
+    transform: scaleX(0);
+    transition: transform 200ms ease;
+}
+
+textarea:focus:has(~ .text) ~ .text{
+    transform: scaleX(1) !important;
+}
+
+.submit{
+    cursor: pointer;
+    width: 50%;
+    font-size: 2rem;
+    color: white;
+    background: #181818;
+    border: none;
+    margin-top: 1rem;
+    border-radius: .5rem;
+    transition: transform 200ms ease;
+}
+
+.submit:hover{
+    transform: scale(.95);
+}
+
+.succ{
+    color: green;
+}
+
+.unsucc{
+    color: red;
 }

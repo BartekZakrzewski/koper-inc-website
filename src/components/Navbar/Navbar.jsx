@@ -14,7 +14,9 @@ const Navbar = ({ totalItems }) => {
         <>
             <AppBar position='fixed' className={classes.appBar} style={{background: '#121212'}}>
                 <Toolbar>
-                    <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
+                    <Typography component={Link} to="/" onClick={() => {
+                        window.scrollTo(0, 0)
+                    }} variant="h6" className={classes.title} color="inherit">
                         <img src={logo} alt="Koper Inc." height="50px" className={classes.image}/>
                         Koper Inc.
                     </Typography>
