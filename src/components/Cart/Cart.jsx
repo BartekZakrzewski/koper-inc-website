@@ -26,7 +26,7 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
 
             <div className={classes.cardDetails}>
                 <Typography variant="h4" style={{color: "rgb(255, 255, 255, 0.7)"}}>
-                    Łącznie: { cart.subtotal.formatted_with_symbol }
+                    Łącznie: { cart.subtotal.formatted } zł
                 </Typography>
                 <div>
                     <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleEmptyCart}>Wyczyść Koszyk</Button>

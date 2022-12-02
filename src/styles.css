@@ -2,6 +2,10 @@
     scroll-behavior: smooth;
 }
 
+*:not(label, span, svg, h3, div){
+    overflow-x: hidden;
+}
+
 body{
     background-color: #181818;
     margin: 0;
@@ -73,6 +77,7 @@ body{
 
     overflow: hidden;
     position: relative;
+    transition: max-height 200ms ease;
 }
 .cutoff-text::before{
     content: '';
@@ -86,6 +91,7 @@ body{
 }
 
 .expand-btn{
+    background: unset;
     appearance: none;
     border: 1px solid rgba(255, 255, 255, 0.7);
     padding: .5em;
@@ -97,15 +103,9 @@ body{
 .expand-btn:hover{
     color: rgba(255, 255, 255, 0.7);
 }
-.expand-btn:before{
-    content: "Pokaż więcej";
-}
-.expand-btn:checked:before{
-    content: "Pokaż miej";
-}
 
-.cutoff-text:has(+ .expand-btn:checked){
-    max-height: none;
+.checked{
+    max-height: none !important;
 }
 
 .contact-form{
@@ -133,7 +133,7 @@ body{
 }
 @media screen and (max-width: 599px) {
     .container{
-        width: 15rem;
+        width: 20rem;
     }
 }
 
@@ -177,6 +177,7 @@ textarea{
     background-color: transparent;
     border: none;
     border-bottom: 2px solid white;
+    border-radius: none;
 
     color: #fff;
 }
@@ -197,6 +198,7 @@ textarea{
     
     bottom: 0;
     border-bottom:2px solid #3f51b5;
+    border-radius: none;
 
     transform: scaleX(0);
     transition: transform 200ms ease;
@@ -228,4 +230,24 @@ textarea:focus:has(~ .text) ~ .text{
 
 .unsucc{
     color: red;
+}
+
+::-webkit-scrollbar{
+    width: .5rem;
+}
+
+::-webkit-scrollbar-track{
+    background: transparent;
+    background: #121212;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 100vw;
+    margin-block: .5rem;
+    background-color: #dfdfdf;
+    transition: all 200ms ease;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: #3f51b5;
 }

@@ -11,7 +11,7 @@ const CartItem = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
             <CardMedia image={item.image.url} alt={item.name} className={classes.media} />
             <CardContent className={classes.cardContent}>
                 <Typography variant="h4" style={{color: "#fff"}}>{item.name}</Typography>
-                <Typography variant="h5" style={{color: "#fff"}}>{item.line_total.formatted_with_symbol}</Typography>
+                <Typography variant="h5" style={{color: "#fff"}}>{item.line_total.formatted} zł</Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
                 <div className={classes.buttons} style={{color: "rgba(255,255,255,0.7)"}}>

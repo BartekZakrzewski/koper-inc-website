@@ -8,14 +8,14 @@ const Review = ({ checkoutToken }) => {
             <List disablePadding>
             {checkoutToken.line_items.map(product => (
                 <ListItem style={{ padding: '10px 0' }} key={product.name}>
-                <ListItemText primary={product.name} secondary={`Quantity: ${product.quantity}`} />
-                <Typography variant="body2">{product.line_total.formatted_with_symbol}</Typography>
+                <ListItemText primary={product.name} secondary={`Ilość: ${product.quantity}`} />
+                <Typography variant="body2">{product.line_total.formatted} zł</Typography>
                 </ListItem>
             ))}
             <ListItem style={{ padding: '10px 0' }}>
-                <ListItemText primary="Total" />
+                <ListItemText primary="Łącznie" />
                 <Typography variant="subtitle1" style={{ fontWeight: 700, }}>
-                {checkoutToken.subtotal.formatted_with_symbol}
+                {checkoutToken.subtotal.formatted} zł
                 </Typography>
             </ListItem>
             </List>

@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
 
 import useStyles from './styles'
 
 const Product = ({ product, onAddToCart }) => {
+    const [checked, setChecked] = useState(false);
     const classes = useStyles();
-    
+
     return (
         <Card className={classes.root}>
             <CardMedia className={classes.media} image={product.image.url} title={product.name}/>
@@ -16,13 +17,13 @@ const Product = ({ product, onAddToCart }) => {
                         {product.name}
                     </Typography>
                     <Typography variant="h5" style={{color: "#fff"}}>
-                        {product.price.formatted_with_symbol}
+                        {product.price.formatted} zł
                     </Typography>
                 </div>
-                <Typography dangerouslySetInnerHTML={{__html: product.description}} variant='body2' className='cutoff-text' style={{
+                <Typography dangerouslySetInnerHTML={{__html: product.description}} variant='body2' className={`cutoff-text ${checked && "checked"}`} style={{
                     color: "rgba(255, 255, 255, 0.7)"
                 }}/>
-                <input className='expand-btn' type="checkbox" />
+                <button className='expand-btn' onClick={() => setChecked(!checked)}>{ checked && "Pokaż mniej" || !checked && "Pokaż więcej" }</button>
             </CardContent>
             <CardActions disableSpacing className={classes.cardActions}>
                 <IconButton aria-label="Add to Cart" onClick={() => onAddToCart(product.id, 1)} style={{color: "#fff"}}>

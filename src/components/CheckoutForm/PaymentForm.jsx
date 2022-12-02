@@ -14,8 +14,6 @@ const PaymentForm = ({ checkoutToken, shippingData, adress, backStep, onCaptureC
     const cardElement = elements.getElement(CardElement);
 
     const paymentMethodResponse = await stripe.createPaymentMethod({ type: 'card', card: cardElement });
-    
-    //console.log(shippingData);
 
     if(paymentMethodResponse.error){
       console.log(paymentMethodResponse.error);
@@ -64,7 +62,7 @@ const PaymentForm = ({ checkoutToken, shippingData, adress, backStep, onCaptureC
               <div style={{ display: 'flex', justifyContent: 'space-between'}}>
                 <Button variant='outlined' onClick={backStep}>Back</Button>
                 <Button type='submit' variant='contained' disabled={!stripe} color="primary">
-                  Pay {checkoutToken.subtotal.formatted_with_symbol}
+                  Pay {checkoutToken.subtotal.formatted} zł
                 </Button>
               </div>
             </form>
