@@ -10,6 +10,7 @@ const FormInput = ({ name, label, required }) => {
             control={control}
             defaultValue = ""
             name={name}
+            maxlength = "10"
             render={({ field }) => (
                 <TextField
                     {...field}

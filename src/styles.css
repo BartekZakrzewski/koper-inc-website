@@ -51,12 +51,61 @@ body{
     margin-top: 1rem;
     color: #181818;
     z-index: 999;
+    opacity: 1;
+    transition: opacity 200ms cubic-bezier(.17,.67,1,.65);
+}
+.kontakt-btn:hover{
+    opacity: .85;
 }
 .kontakt-btn > h4{
     font-weight: 700;
 }
 #kontakt{
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.cutoff-text{
+    --line-height: 1.4;
+    --max-lines: 1;
+
+    max-height: calc(var(--max-lines) * 2em * var(--line-height));
+    line-height: var(--line-height);
+
+    overflow: hidden;
+    position: relative;
+}
+.cutoff-text::before{
+    content: '';
+    position: absolute;
+    
+    height: calc(1em * var(--line-height));
+    width: 100%;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, #121212);
+}
+
+.expand-btn{
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    padding: .5em;
+    border-radius: .25em;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 200ms cubic-bezier(.17,.67,1,.65);
+}
+.expand-btn:hover{
+    color: rgba(255, 255, 255, 0.7);
+}
+.expand-btn:before{
+    content: "Pokaż więcej";
+}
+.expand-btn:checked:before{
+    content: "Pokaż miej";
+}
+
+.cutoff-text:has(+ .expand-btn:checked){
+    max-height: none;
 }
 
 .contact-form{
@@ -70,46 +119,6 @@ body{
 
     margin: 0 0 2rem 0;
 }
-
-/* .contact-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-}
-
-.container-message{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-    width: 100%;
-}
-
-label:has(+ div > input[name="form_name"]:not(:focus)),
-label:has(+ div > input[name="form_email"]:not(:focus)),
-label:has(+ div > input[name="form_subject"]:not(:focus)){
-    color: #fff !important;
-}
-
-div::before,
-div::before:has(> input[name="form_email"]),
-div::before:has(> input[name="form_subject"]){
-    border-bottom: 2px solid #fff !important;
-    color: #fff !important;
-    background-color: #fff;
-}
-
-
-input[name="form_name"]::before,
-input[name="form_email"]::before,
-input[name="form_subject"]::before{
-    border-bottom: 2px solid #fff !important;
-    color: #fff !important;
-    background-color: #fff;
-} */
 
 .container{
     background: #121212;

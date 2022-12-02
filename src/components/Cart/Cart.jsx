@@ -10,7 +10,7 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
 
     const EmptyCart = () => (
         <Typography variant='subtitle1' style={{color: "rgba(255,255,255,0.7)"}}>
-            Nie masz jeszczę niczego w koszyku, <Link to="/" className={classes.link}>dodaj teraz!</Link>
+            Nie masz jeszczę niczego w koszyku, <Link to="/#sklep" className={classes.link} onClick={() => window.scrollTo("#kontakt")} >dodaj teraz!</Link>
         </Typography>
     );
 
