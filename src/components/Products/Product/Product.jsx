@@ -4,7 +4,7 @@ import { AddShoppingCart } from '@material-ui/icons';
 
 import useStyles from './styles'
 
-const Product = ({ product, onAddToCart, isVisible }) => {
+const Product = ({ product, onAddToCart, isVisible, ava }) => {
     const [checked, setChecked] = useState(false);
     const classes = useStyles();
 
@@ -17,7 +17,10 @@ const Product = ({ product, onAddToCart, isVisible }) => {
                         {product.name}
                     </Typography>
                     <Typography variant="h5" style={{color: "#fff"}}>
-                        {product.price.formatted} zł
+                        {
+                            ava == 0?"Wyprzedane":
+                            `${product.price.formatted} zł`
+                        }
                     </Typography>
                 </div>
                 <Typography dangerouslySetInnerHTML={{__html: product.description}} variant='body2' className={`cutoff-text ${checked && "checked"}`} style={{
@@ -26,9 +29,11 @@ const Product = ({ product, onAddToCart, isVisible }) => {
                 <button className='expand-btn' onClick={() => setChecked(!checked)}>{ checked && "Pokaż mniej" || !checked && "Pokaż więcej" }</button>
             </CardContent>
             <CardActions disableSpacing className={classes.cardActions}>
-                <IconButton aria-label="Add to Cart" onClick={() => onAddToCart(product.id, 1)} style={{color: "#fff"}}>
-                    <AddShoppingCart/>
-                </IconButton>
+                {ava != 0 &&
+                    <IconButton aria-label="Add to Cart" onClick={() => onAddToCart(product.id, 1)} style={{color: "#fff"}}>
+                        <AddShoppingCart/>
+                    </IconButton>
+                }
             </CardActions>
         </Card>
     )

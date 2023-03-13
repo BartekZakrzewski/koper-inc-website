@@ -37,6 +37,8 @@ const Products = ({ products, onAddToCart, obs, isVisible }) => {
         });
     }
 
+    console.log(products);
+
     return (
         <main className={classes.content}>
             <div className="welcome-page">
@@ -53,9 +55,9 @@ const Products = ({ products, onAddToCart, obs, isVisible }) => {
             <div className={classes.toolbar} id="sklep" ref={obs} /> 
             <Grid container justifyContent="center" spacing={4} style={{padding: "0 .5rem 0 .5rem"}}>
                 { products.map( product => (
-                    <Grid item key={ product.id } xs={12} sm={6} md={4} lg={3}>
-                        <Product product={product} isVisible={isVisible} onAddToCart={onAddToCart} />
-                    </Grid>
+                        <Grid item key={ product.id } xs={12} sm={6} md={4} lg={3}>
+                            <Product ava={product.inventory.available} product={product} isVisible={isVisible} onAddToCart={onAddToCart} />
+                        </Grid>
                 )) }
             </Grid>
             <div className={classes.toolbar} id="kontakt" ref={contact}/> 
