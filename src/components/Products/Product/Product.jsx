@@ -9,7 +9,7 @@ const Product = ({ product, onAddToCart, isVisible, ava }) => {
     const classes = useStyles();
 
     return (
-        <Card className={`${classes.root} prod ${isVisible?'prod-visible':'prod-invisible'}`}>
+        <Card className={`${classes.root} prod ${isVisible?'prod-visible':'prod-invisible'} ${ava!=0?'':'soldout'}`}>
             <CardMedia className={classes.media} image={product.image.url} title={product.name}/>
             <CardContent>
                 <div className={classes.cardContent}>
@@ -18,7 +18,7 @@ const Product = ({ product, onAddToCart, isVisible, ava }) => {
                     </Typography>
                     <Typography variant="h5" style={{color: "#fff"}}>
                         {
-                            ava == 0?"Wyprzedane":
+                            ava == 0?"Brak":
                             `${product.price.formatted} zł`
                         }
                     </Typography>
