@@ -69,8 +69,16 @@ body{
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.prod-visible{
-    opacity: 1 !important;
+.prod{
+    opacity: 1;
+}
+@media screen and (min-width: 1280px){
+    .prod-visible{
+        opacity: 1;
+    }
+    .prod-invisible{
+        opacity: .5;
+    }
 }
 
 .cutoff-text{

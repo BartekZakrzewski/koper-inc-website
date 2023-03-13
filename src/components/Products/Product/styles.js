@@ -5,7 +5,6 @@ export default makeStyles(() => ({
         maxWidth: '100%',
         transition: 'all 600ms ease',
         background: '#121212',
-        opacity: .5
     },
     media: {
         height: 0,
