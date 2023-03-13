@@ -59,32 +59,34 @@ const AdressForm = ({ checkoutToken, next }) => {
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(data => next({ ...data, shippingCountry, shippingSubdivision, shippingOption }))}>
                     <Grid container spacing={3}>
-                        <FormInput required name="firstName" label="First name" />
-                        <FormInput required name="lastName" label="Last name" />
-                        <FormInput required name="adress" label="Adress" />
+                        <FormInput required name="firstName" label="Imię" />
+                        <FormInput required name="lastName" label="Nazwisko" />
+                        <FormInput required name="city" label="City" value={'Łódź'}/>
+                        <FormInput required name="adress" label="Nazwa szkoły" />
                         <FormInput required name="email" label="Email" />
-                        <FormInput required name="city" label="City" />
-                        <FormInput required name="zip" label="zip or post code" />
-                        <Grid item xs={12} sm={6}>
-                            <InputLabel>Shipping Country</InputLabel>
-                            <Select value={shippingCountry} fullWidth onChange={e => setShippingCountry(e.target.value)}>
-                                {countries.map(country => (
-                                    <MenuItem key={country.id} value={country.id}>
-                                        {country.label}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <InputLabel>Shipping Subdivision</InputLabel>
-                            <Select value={shippingSubdivision} fullWidth onChange={e => setShippingSubdivision(e.target.value)}>
-                                {subdivisions.map(subdivision => (
-                                    <MenuItem key={subdivision.id} value={subdivision.id}>
-                                        {subdivision.label}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </Grid>
+                        {/* <div className="unused">
+                            <FormInput required name="zip" label="zip or post code" value={90-734}/>
+                            <Grid item xs={12} sm={6}>
+                                <InputLabel>Shipping Country</InputLabel>
+                                <Select value={shippingCountry} fullWidth onChange={e => setShippingCountry(e.target.value)}>
+                                    {countries.map(country => (
+                                        <MenuItem key={country.id} value={country.id}>
+                                            {country.label}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <InputLabel>Shipping Subdivision</InputLabel>
+                                <Select value={shippingSubdivision} fullWidth onChange={e => setShippingSubdivision(e.target.value)}>
+                                    {subdivisions.map(subdivision => (
+                                        <MenuItem key={subdivision.id} value={subdivision.id}>
+                                            {subdivision.label}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </Grid>
+                        </div> */}
                         <Grid item xs={12} sm={6}>
                             <InputLabel>Shipping Options</InputLabel>
                             <Select value={shippingOption} fullWidth onChange={e => setShippingOption(e.target.value)}>

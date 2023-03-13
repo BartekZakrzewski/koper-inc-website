@@ -35,7 +35,7 @@ const PaymentForm = ({ checkoutToken, shippingData, adress, backStep, onCaptureC
         },
         fulfillment: { shipping_method: shippingData.shippingOption },
         payment: {
-          gateway: 'gway_4oG3G0DGPjdpo6',
+          gateway: 'gway_joPZk8OkAbrRle',
           stripe: {
             payment_method_id: paymentMethodResponse.paymentMethod.id,
           }

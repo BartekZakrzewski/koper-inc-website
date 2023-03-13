@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { commerce } from './lib/commerce';
 import { Products, Navbar, Cart, Checkout } from './components';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -9,6 +9,11 @@ const App = () => {
     const [cart, setCart] = useState({});
     const [order, setOrder] = useState({});
     const [err, setErr] = useState('');
+    const [isVisible, setVisible] = useState(false);
+    
+    const observedEl = useRef();
+
+    const options = { root: null, rootMargin: "0px", threshold: 1}
 
     const fetchProducts = async () => {
         const { data } = await commerce.products.list();
@@ -66,13 +71,25 @@ const App = () => {
         fetchCart();
     }, []);
 
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            const [ entry ] = entries;
+            setVisible(entry.isIntersecting);
+        }, options);
+        if(observedEl.current) observer.observe(observedEl.current);
+
+        return () => {
+            if(observedEl.current) observer.unobserve(observedEl.current);
+        }
+    }, [observedEl, options])
+
     return (
         <Router>
             <div>
                 <Navbar totalItems={cart.total_items} />
                 <Routes>
                     <Route path='/' element={
-                        <Products products={products} onAddToCart={handleAddToCart}/>
+                        <Products products={products} onAddToCart={handleAddToCart} obs={observedEl} isVisible={isVisible} />
                     } />
                     <Route path='/koszyk' element={
                         <Cart 

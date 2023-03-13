@@ -3,7 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 export default makeStyles(() => ({
     root: {
         maxWidth: '100%',
-        background: '#121212'
+        transition: 'all 600ms ease',
+        background: '#121212',
+        opacity: .5
     },
     media: {
         height: 0,

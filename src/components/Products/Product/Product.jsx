@@ -4,12 +4,12 @@ import { AddShoppingCart } from '@material-ui/icons';
 
 import useStyles from './styles'
 
-const Product = ({ product, onAddToCart }) => {
+const Product = ({ product, onAddToCart, isVisible }) => {
     const [checked, setChecked] = useState(false);
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
+        <Card className={`${classes.root} prod ${isVisible && 'prod-visible'}`}>
             <CardMedia className={classes.media} image={product.image.url} title={product.name}/>
             <CardContent>
                 <div className={classes.cardContent}>

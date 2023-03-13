@@ -27,7 +27,9 @@ const Checkout = ({ cart, order, onCaptureCheckout, err }) => {
     
                     setChekoutToken(token);
                 } catch (err) {
-                    history('/');
+                    if(order.redirect){
+                        history('/');
+                    }
                 }
             }
     
