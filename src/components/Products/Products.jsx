@@ -37,8 +37,6 @@ const Products = ({ products, onAddToCart, obs, isVisible }) => {
         });
     }
 
-    console.log(products);
-
     return (
         <main className={classes.content}>
             <div className="welcome-page">
@@ -69,11 +67,11 @@ const Products = ({ products, onAddToCart, obs, isVisible }) => {
                     </Typography>
                     <div className="container">
                         <div className="inputs">
-                            <FormInput required name="form_name" label="Name" inpref={input2}/>
-                            <FormInput required name="form_email" label="Email" inpref={input3}/>
+                            <FormInput required name="user_name" label="Name" inpref={input2}/>
+                            <FormInput required name="user_email" label="Email" inpref={input3}/>
                         </div>
                         <div className="textarea">
-                            <textarea name="html_message" className="area" rows={30} required ref={input1} />
+                            <textarea name="message" className="area" rows={30} required ref={input1} />
                             <div className="text" />
                         </div>
                         <input type="submit" value="Send" className="submit" />
