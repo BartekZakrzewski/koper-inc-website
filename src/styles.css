@@ -271,3 +271,12 @@ textarea:focus:has(~ .text) ~ .text{
 .unused{
     display: none;
 }
+
+.product-image{
+    background-size: cover !important;
+    transition: background-size 200ms ease;
+}
+
+.product-image:hover{
+    background-size: contain !important;
+}

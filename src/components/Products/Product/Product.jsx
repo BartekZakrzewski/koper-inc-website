@@ -10,7 +10,7 @@ const Product = ({ product, onAddToCart, isVisible, ava }) => {
 
     return (
         <Card className={`${classes.root} prod ${isVisible?'prod-visible':'prod-invisible'} ${ava!=0?'':'soldout'}`}>
-            <CardMedia className={classes.media} image={product.image.url} title={product.name}/>
+            <CardMedia className={`${classes.media} product-image`} image={product.image.url} title={product.name}/>
             <CardContent>
                 <div className={classes.cardContent}>
                     <Typography variant="h5" style={{color: "#fff"}} gutterBottom>
